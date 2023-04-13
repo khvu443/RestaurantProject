@@ -447,7 +447,7 @@ public class RestaurantDAO {
         }
         return list;
     }
-
+    
     public List<Product> searchProductByName(String name) {
         List<Product> list = new ArrayList<>();
         String query = "select * from product where Name_Product like ? order by Product_id ASC ";

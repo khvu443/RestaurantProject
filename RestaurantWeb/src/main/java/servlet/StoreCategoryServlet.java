@@ -37,16 +37,12 @@ public class StoreCategoryServlet extends HttpServlet {
         List<Product> allP = dao.getProductByCategory(cid);
 
         request.setAttribute("page", page);
-        if (allP.size() < 10 && allP.size() > 5) {
-            request.setAttribute("sizeProduct", 2);
-            System.out.println("size Product: " + 2);
-        } else if (allP.size() < 5) {
-            request.setAttribute("sizeProduct", 1);
-            System.out.println("size Product: " + 1);
-        } else {
-            request.setAttribute("sizeProduct", (allP.size() / 5));
-            System.out.println("size Product: " + (allP.size() / 5));
+        int sizePage = allP.size() / 5;
+        if (allP.size() % 5 != 0) {
+            sizePage++;
         }
+        request.setAttribute("sizeProduct", sizePage);
+
         request.setAttribute("cid", cid);
 
         List<category> cl = dao.getAllCategory();

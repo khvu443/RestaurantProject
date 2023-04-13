@@ -84,556 +84,558 @@
         </div>
         <section class="main">
             <div class="parallax">
-                <jsp:include page="header.jsp"></jsp:include>
 
-                ${message}
-                <!-- SECTION -->
-                <div class="section">
-                    <!-- container -->
-                    <div class="container">
-                        <!-- row -->
-                        <div class="row">
+                <div class="body">
+                    <jsp:include page="header.jsp"></jsp:include>
 
-                            <%
-                                RestaurantDAO dao = new RestaurantDAO();
-                                List<category> cl = dao.getThreeCategory();
+                    ${message}
+                    <!-- SECTION -->
+                    <div class="section">
+                        <!-- container -->
+                        <div class="container">
+                            <!-- row -->
+                            <div class="row">
 
-                                for (category c : cl) {
-                            %>
-                            <!-- shop -->
-                            <div class="col-md-4 col-xs-6">
-                                <div class="shop">
-                                    <div class="shop-img">
-                                        <img style="height:230px" src="./img/vietnamese_food.jpg" alt="combo" style="z-index:10">
-                                    </div>
-                                    <div class="shop-body">
-                                        <h3><%= c.getCategoryName()%><br>Category</h3>
-                                        <a href="StoreCategoryServlet?page=1&cid=<%= c.getCategoryID()%>&sort=all" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a> <!-- taọ thêm 1 jsp cho combo -->
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /shop -->
-                            <%}%>
-                        </div>
-                        <!-- /row -->
-                    </div>
-                    <!-- /container -->
-                </div>
-                <!-- /SECTION -->
+                                <%
+                                    RestaurantDAO dao = new RestaurantDAO();
+                                    List<category> cl = dao.getThreeCategory();
 
-                <!-- SECTION -->
-                <div class="section">
-                    <!-- container -->
-                    <div class="container">
-                        <!-- row -->
-                        <div class="row">
-
-                            <!-- section title -->
-                            <div class="col-md-12">
-                                <div class="section-title">
-                                    <h3 class="title">New Products</h3>
-                                </div>
-                            </div>
-                            <!-- /section title -->
-
-                            <!-- Products tab & slick -->
-                            <div class="col-md-12">
-                                <div class="row">
-                                    <div class="products-tabs">
-                                        <!-- tab -->
-                                        <div id="tab1" class="tab-pane active">
-                                            <div class="products-slick" data-nav="#slick-nav-1">
-                                                <!-- product -->
-                                                <c:forEach items="${listP}" var="p">
-                                                    <c:if test="${p.stock == true}">
-                                                        <div class="product">
-                                                            <div class="product-img">
-                                                                <img style="height: 230px" src="${p.image}">
-                                                                <div class="product-label">
-                                                                    <span class="new">NEW</span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="product-body">
-                                                                <h3 class="product-name"><a href="Detail?pid=${p.PID}">${p.nameP}</a></h3>
-                                                                <h4 class="product-price">${p.price / 2} VND <del class="product-old-price">${p.price} VND</del></h4>
-                                                                <div class="product-rating">
-                                                                    <i style="color: #000000; z-index: 1">${p.rating}</i>
-                                                                    <c:forEach var="i" begin="1" end="${p.rating}">
-                                                                        <i class="fa fa-star"></i>
-                                                                    </c:forEach>
-                                                                    <c:choose>
-                                                                        <c:when test="${p.rating < 5 && p.rating >=4}"><i class="fa fa-star-o"></i></c:when>
-                                                                        <c:when test="${p.rating < 4 && p.rating >=3}">
-                                                                            <i class="fa fa-star-o"></i>
-                                                                            <i class="fa fa-star-o"></i>
-                                                                        </c:when>
-                                                                        <c:when test="${p.rating < 3 && p.rating >=2}">
-                                                                            <i class="fa fa-star-o"></i>
-                                                                            <i class="fa fa-star-o"></i>
-                                                                            <i class="fa fa-star-o"></i>
-                                                                        </c:when>
-                                                                        <c:when test="${p.rating < 2 && p.rating >=1}">
-                                                                            <i class="fa fa-star-o"></i>
-                                                                            <i class="fa fa-star-o"></i>
-                                                                            <i class="fa fa-star-o"></i>
-                                                                            <i class="fa fa-star-o"></i>
-                                                                        </c:when>
-                                                                        <c:when test="${p.rating == 0 && p.rating < 1}">
-                                                                            <i class="fa fa-star-o"></i>
-                                                                            <i class="fa fa-star-o"></i>
-                                                                            <i class="fa fa-star-o"></i>
-                                                                            <i class="fa fa-star-o"></i>
-                                                                            <i class="fa fa-star-o"></i>
-                                                                        </c:when>
-                                                                    </c:choose>
-                                                                </div>
-                                                                <div class="product-btns">
-                                                                    <button><a class="add-to-wishlist" href="Work_In_Progress.jsp"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></a></button>
-                                                                    <button><a class="quick-view" href="Detail?pid=${p.PID}"><i class="fa fa-eye"></i><span class="tooltipp">View</span></a></button>
-                                                                </div>
-                                                            </div>
-                                                            <div class="add-to-cart">
-                                                                <a href="CartServlet?id=${p.PID}" class="add-to-cart-btn" type="submit"><i class="fa fa-shopping-cart"></i>Ordered</a>
-                                                            </div>
-                                                        </div>
-                                                    </c:if>
-                                                </c:forEach>
-                                                <!-- /product -->
-                                            </div>
-                                            <div id="slick-nav-1" class="products-slick-nav"></div>
+                                    for (category c : cl) {
+                                %>
+                                <!-- shop -->
+                                <div class="col-md-4 col-xs-6">
+                                    <div class="shop">
+                                        <div class="shop-img">
+                                            <img style="height:230px" src="./img/vietnamese_food.jpg" alt="combo" style="z-index:10">
                                         </div>
-                                        <!-- /tab -->
+                                        <div class="shop-body">
+                                            <h3><%= c.getCategoryName()%><br>Category</h3>
+                                            <a href="StoreCategoryServlet?page=1&cid=<%= c.getCategoryID()%>&sort=all" class="cta-btn">Shop now <i class="fa fa-arrow-circle-right"></i></a> <!-- taọ thêm 1 jsp cho combo -->
+                                        </div>
                                     </div>
                                 </div>
+                                <!-- /shop -->
+                                <%}%>
                             </div>
-                            <!-- Products tab & slick -->
+                            <!-- /row -->
                         </div>
-                        <!-- /row -->
+                        <!-- /container -->
                     </div>
-                    <!-- /container -->
-                </div>
-                <!-- /SECTION -->
+                    <!-- /SECTION -->
 
-                <!-- HOT DEAL SECTION -->
-                <div id="hot-deal" class="section">
-                    <!-- container -->
-                    <div class="container">
-                        <!-- row -->
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="hot-deal">
-                                    <ul class="hot-deal-countdown">
-                                        <li>
-                                            <div>
-                                                <h3 id="day"></h3>
-                                                <span>Days</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div>
-                                                <h3 id="hours"></h3>
-                                                <span>Hours</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div>
-                                                <h3 id="mins"></h3>
-                                                <span>Mins</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div>
-                                                <h3 id="sec"></h3>
-                                                <span>Secs</span>
-                                            </div>
-                                        </li>
+                    <!-- SECTION -->
+                    <div class="section">
+                        <!-- container -->
+                        <div class="container">
+                            <!-- row -->
+                            <div class="row">
 
-                                    </ul>
-                                    <div><h3 id="Notice" style="color: #FFF; text-shadow: 2px 2px #ff0000;"></h3></div>
-                                    <h2 class="text-uppercase">Hot deal this week</h2>
-                                    <p>New Combo VietNamese'Food to 50% OFF</p>
-                                    <a class="primary-btn cta-btn" href="Work_In_Progress.jsp">Shop now</a> <!-- tạo 1 hotdeal jsp -->
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /row -->
-                    </div>
-                    <!-- /container -->
-                </div>
-                <!-- /HOT DEAL SECTION -->
-
-                <!-- Phần này ko thể sửa do yêu cầu của quân-->
-                <!-- SECTION -->
-                <div class="section">
-                    <!-- container -->
-                    <div class="container">
-                        <!-- row -->
-                        <div class="row">
-
-                            <!-- section title -->
-                            <div class="col-md-12">
-                                <div class="section-title">
-                                    <h3 class="title">Top Rating</h3>
-                                    <div class="section-nav">
-                                        <ul class="section-tab-nav tab-nav">
-                                            <li class="active"><a data-toggle="tab" href="#tab2">Highest Rating</a></li>
-                                            <li><a data-toggle="tab" href="#tab2">Most purchase</a></li>
-                                            <li><a data-toggle="tab" href="#tab2">Most find</a></li>
-                                        </ul>
+                                <!-- section title -->
+                                <div class="col-md-12">
+                                    <div class="section-title">
+                                        <h3 class="title">New Products</h3>
                                     </div>
                                 </div>
-                            </div>
-                            <!-- /section title -->
+                                <!-- /section title -->
 
-                            <!-- Products tab & slick -->
-                            <div class="col-md-12">
-                                <div class="row">
-                                    <div class="products-tabs">
-                                        <!-- tab -->
-                                        <div id="tab2" class="tab-pane fade in active">
-                                            <div class="products-slick" data-nav="#slick-nav-2">
-                                                <c:forEach items="${rateP}" var="p">
-                                                    <c:if test="${p.stock == true}">
-                                                        <div class="product">
-                                                            <div class="product-img">
-                                                                <img style="height: 230px" src="${p.image}">
-                                                                <c:forEach items="${listP}" var="newP">
-                                                                    <c:if test="${p.PID == newP.PID}">
-                                                                        <div class="product-label">
-                                                                            <span class="sale">-50%</span>
-                                                                            <span class="new">NEW</span>
-                                                                        </div>
-                                                                    </c:if>
-
-                                                                </c:forEach>
+                                <!-- Products tab & slick -->
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="products-tabs">
+                                            <!-- tab -->
+                                            <div id="tab1" class="tab-pane active">
+                                                <div class="products-slick" data-nav="#slick-nav-1">
+                                                    <!-- product -->
+                                                    <c:forEach items="${listP}" var="p">
+                                                        <c:if test="${p.stock == true}">
+                                                            <div class="product">
+                                                                <div class="product-img">
+                                                                    <img style="height: 230px" src="${p.image}">
+                                                                    <div class="product-label">
+                                                                        <span class="new">NEW</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="product-body">
+                                                                    <h3 class="product-name"><a href="Detail?pid=${p.PID}">${p.nameP}</a></h3>
+                                                                    <h4 class="product-price">${p.price / 2} VND <del class="product-old-price">${p.price} VND</del></h4>
+                                                                    <div class="product-rating">
+                                                                        <i style="color: #000000; z-index: 1">${p.rating}</i>
+                                                                        <c:forEach var="i" begin="1" end="${p.rating}">
+                                                                            <i class="fa fa-star"></i>
+                                                                        </c:forEach>
+                                                                        <c:choose>
+                                                                            <c:when test="${p.rating < 5 && p.rating >=4}"><i class="fa fa-star-o"></i></c:when>
+                                                                            <c:when test="${p.rating < 4 && p.rating >=3}">
+                                                                                <i class="fa fa-star-o"></i>
+                                                                                <i class="fa fa-star-o"></i>
+                                                                            </c:when>
+                                                                            <c:when test="${p.rating < 3 && p.rating >=2}">
+                                                                                <i class="fa fa-star-o"></i>
+                                                                                <i class="fa fa-star-o"></i>
+                                                                                <i class="fa fa-star-o"></i>
+                                                                            </c:when>
+                                                                            <c:when test="${p.rating < 2 && p.rating >=1}">
+                                                                                <i class="fa fa-star-o"></i>
+                                                                                <i class="fa fa-star-o"></i>
+                                                                                <i class="fa fa-star-o"></i>
+                                                                                <i class="fa fa-star-o"></i>
+                                                                            </c:when>
+                                                                            <c:when test="${p.rating == 0 && p.rating < 1}">
+                                                                                <i class="fa fa-star-o"></i>
+                                                                                <i class="fa fa-star-o"></i>
+                                                                                <i class="fa fa-star-o"></i>
+                                                                                <i class="fa fa-star-o"></i>
+                                                                                <i class="fa fa-star-o"></i>
+                                                                            </c:when>
+                                                                        </c:choose>
+                                                                    </div>
+                                                                    <div class="product-btns">
+                                                                        <button><a class="add-to-wishlist" href="Work_In_Progress.jsp"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></a></button>
+                                                                        <button><a class="quick-view" href="Detail?pid=${p.PID}"><i class="fa fa-eye"></i><span class="tooltipp">View</span></a></button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="add-to-cart">
+                                                                    <a href="CartServlet?id=${p.PID}" class="add-to-cart-btn" type="submit"><i class="fa fa-shopping-cart"></i>Ordered</a>
+                                                                </div>
                                                             </div>
-                                                            <div class="product-body">
-                                                                <h3 class="product-name"><a href="Detail?pid=${p.PID}">${p.nameP}</a></h3>
+                                                        </c:if>
+                                                    </c:forEach>
+                                                    <!-- /product -->
+                                                </div>
+                                                <div id="slick-nav-1" class="products-slick-nav"></div>
+                                            </div>
+                                            <!-- /tab -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Products tab & slick -->
+                            </div>
+                            <!-- /row -->
+                        </div>
+                        <!-- /container -->
+                    </div>
+                    <!-- /SECTION -->
+
+                    <!-- HOT DEAL SECTION -->
+                    <div id="hot-deal" class="section">
+                        <!-- container -->
+                        <div class="container">
+                            <!-- row -->
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="hot-deal">
+                                        <ul class="hot-deal-countdown">
+                                            <li>
+                                                <div>
+                                                    <h3 id="day"></h3>
+                                                    <span>Days</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div>
+                                                    <h3 id="hours"></h3>
+                                                    <span>Hours</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div>
+                                                    <h3 id="mins"></h3>
+                                                    <span>Mins</span>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div>
+                                                    <h3 id="sec"></h3>
+                                                    <span>Secs</span>
+                                                </div>
+                                            </li>
+
+                                        </ul>
+                                        <div><h3 id="Notice" style="color: #FFF; text-shadow: 2px 2px #ff0000;"></h3></div>
+                                        <h2 class="text-uppercase">Hot deal this week</h2>
+                                        <p>New Combo VietNamese'Food to 50% OFF</p>
+                                        <a class="primary-btn cta-btn" href="Work_In_Progress.jsp">Shop now</a> <!-- tạo 1 hotdeal jsp -->
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /row -->
+                        </div>
+                        <!-- /container -->
+                    </div>
+                    <!-- /HOT DEAL SECTION -->
+
+                    <!-- Phần này ko thể sửa do yêu cầu của quân-->
+                    <!-- SECTION -->
+                    <div class="section">
+                        <!-- container -->
+                        <div class="container">
+                            <!-- row -->
+                            <div class="row">
+
+                                <!-- section title -->
+                                <div class="col-md-12">
+                                    <div class="section-title">
+                                        <h3 class="title">Top Rating</h3>
+                                        <div class="section-nav">
+                                            <ul class="section-tab-nav tab-nav">
+                                                <li class="active"><a data-toggle="tab" href="#tab2">Highest Rating</a></li>
+                                                <li><a data-toggle="tab" href="#tab2">Most purchase</a></li>
+                                                <li><a data-toggle="tab" href="#tab2">Most find</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /section title -->
+
+                                <!-- Products tab & slick -->
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="products-tabs">
+                                            <!-- tab -->
+                                            <div id="tab2" class="tab-pane fade in active">
+                                                <div class="products-slick" data-nav="#slick-nav-2">
+                                                    <c:forEach items="${rateP}" var="p">
+                                                        <c:if test="${p.stock == true}">
+                                                            <div class="product">
+                                                                <div class="product-img">
+                                                                    <img style="height: 230px" src="${p.image}">
+                                                                    <c:forEach items="${listP}" var="newP">
+                                                                        <c:if test="${p.PID == newP.PID}">
+                                                                            <div class="product-label">
+                                                                                <span class="sale">-50%</span>
+                                                                                <span class="new">NEW</span>
+                                                                            </div>
+                                                                        </c:if>
+
+                                                                    </c:forEach>
+                                                                </div>
+                                                                <div class="product-body">
+                                                                    <h3 class="product-name"><a href="Detail?pid=${p.PID}">${p.nameP}</a></h3>
 
 
+                                                                    <c:forEach items="${listP}" var="np">
+                                                                        <c:choose>
+                                                                            <c:when test="${np.PID == p.PID}">
+                                                                                <h4 class="product-price">${p.price / 2} VND <del class="product-old-price">${p.price} VND</del></h4>
+                                                                            </c:when >   
+                                                                        </c:choose>
+                                                                    </c:forEach>
+
+                                                                    <c:forEach items="${oldProduct}" var="onp">
+                                                                        <c:choose>
+                                                                            <c:when test="${onp.PID == p.PID}">
+                                                                                <h4 class="product-price">${p.price}</h4>
+                                                                            </c:when >   
+                                                                        </c:choose>
+                                                                    </c:forEach>  
+
+                                                                    <div class="product-rating">
+                                                                        <i style="color: #000000; z-index: 1">${p.rating}</i>
+                                                                        <c:forEach var="i" begin="1" end="${p.rating}">
+                                                                            <i class="fa fa-star"></i>
+                                                                        </c:forEach>
+                                                                        <c:choose>
+                                                                            <c:when test="${p.rating < 5 && p.rating >=4}"><i class="fa fa-star-o"></i></c:when>
+                                                                            <c:when test="${p.rating < 4 && p.rating >=3}">
+                                                                                <i class="fa fa-star-o"></i>
+                                                                                <i class="fa fa-star-o"></i>
+                                                                            </c:when>
+                                                                            <c:when test="${p.rating < 3 && p.rating >=2}">
+                                                                                <i class="fa fa-star-o"></i>
+                                                                                <i class="fa fa-star-o"></i>
+                                                                                <i class="fa fa-star-o"></i>
+                                                                            </c:when>
+                                                                            <c:when test="${p.rating < 2 && p.rating >=1}">
+                                                                                <i class="fa fa-star-o"></i>
+                                                                                <i class="fa fa-star-o"></i>
+                                                                                <i class="fa fa-star-o"></i>
+                                                                                <i class="fa fa-star-o"></i>
+                                                                            </c:when>
+                                                                            <c:when test="${p.rating == 0 && p.rating < 1}">
+                                                                                <i class="fa fa-star-o"></i>
+                                                                                <i class="fa fa-star-o"></i>
+                                                                                <i class="fa fa-star-o"></i>
+                                                                                <i class="fa fa-star-o"></i>
+                                                                                <i class="fa fa-star-o"></i>
+                                                                            </c:when>
+                                                                        </c:choose>
+                                                                    </div>
+                                                                    <div class="product-btns">
+                                                                        <button><a class="add-to-wishlist" href="Work_In_Progress.jsp"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></a></button>
+                                                                        <button><a class="quick-view" href="Detail?pid=${p.PID}"><i class="fa fa-eye"></i><span class="tooltipp">View</span></a></button>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="add-to-cart">
+                                                                    <a href="CartServlet?id=${p.PID}" class="add-to-cart-btn" type="submit"><i class="fa fa-shopping-cart"></i>Ordered</a>
+                                                                </div>
+                                                            </div>
+                                                        </c:if>
+                                                    </c:forEach>
+
+                                                </div>
+                                                <div id="slick-nav-2" class="products-slick-nav"></div>
+                                            </div>
+                                            <!-- /tab -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /Products tab & slick -->
+                            </div>
+                            <!-- /row -->
+                        </div>
+                        <!-- /container -->
+                    </div>
+                    <!-- /SECTION -->
+
+                    <!-- SECTION -->
+                    <div class="section">
+                        <!-- container -->
+                        <div class="container">
+                            <!-- row -->
+                            <div class="row">
+                                <div class="col-md-4 col-xs-6">
+                                    <div class="section-title">
+                                        <h4 class="title">Top Rate Asian Food</h4>
+                                        <div class="section-nav">
+                                            <div id="slick-nav-3" class="products-slick-nav"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="products-widget-slick" data-nav="#slick-nav-3">
+
+                                        <div>
+                                            <c:forEach items="${ratePAF1}" var="half1">
+                                                <c:if test="${half1.stock == true}">
+                                                    <!-- product widget -->
+                                                    <div class="product-widget">
+                                                        <div class="product-img">
+                                                            <img src="${half1.image}" alt="">
+                                                        </div>
+                                                        <div class="product-body">
+                                                            <h3 class="product-name"><a href="Detail?pid=${half1.PID}">${half1.nameP}</a></h3>
                                                                 <c:forEach items="${listP}" var="np">
                                                                     <c:choose>
-                                                                        <c:when test="${np.PID == p.PID}">
-                                                                            <h4 class="product-price">${p.price / 2} VND <del class="product-old-price">${p.price} VND</del></h4>
-                                                                        </c:when >   
-                                                                    </c:choose>
-                                                                </c:forEach>
+                                                                        <c:when test="${np.PID == half1.PID}">
+                                                                        <h4 class="product-price">${half1.price / 2} VND <del class="product-old-price">${half1.price} VND</del></h4>
+                                                                    </c:when >   
+                                                                </c:choose>
+                                                            </c:forEach>
 
-                                                                <c:forEach items="${oldProduct}" var="onp">
-                                                                    <c:choose>
-                                                                        <c:when test="${onp.PID == p.PID}">
-                                                                            <h4 class="product-price">${p.price}</h4>
-                                                                        </c:when >   
-                                                                    </c:choose>
-                                                                </c:forEach>  
-
-                                                                <div class="product-rating">
-                                                                    <i style="color: #000000; z-index: 1">${p.rating}</i>
-                                                                    <c:forEach var="i" begin="1" end="${p.rating}">
-                                                                        <i class="fa fa-star"></i>
-                                                                    </c:forEach>
-                                                                    <c:choose>
-                                                                        <c:when test="${p.rating < 5 && p.rating >=4}"><i class="fa fa-star-o"></i></c:when>
-                                                                        <c:when test="${p.rating < 4 && p.rating >=3}">
-                                                                            <i class="fa fa-star-o"></i>
-                                                                            <i class="fa fa-star-o"></i>
-                                                                        </c:when>
-                                                                        <c:when test="${p.rating < 3 && p.rating >=2}">
-                                                                            <i class="fa fa-star-o"></i>
-                                                                            <i class="fa fa-star-o"></i>
-                                                                            <i class="fa fa-star-o"></i>
-                                                                        </c:when>
-                                                                        <c:when test="${p.rating < 2 && p.rating >=1}">
-                                                                            <i class="fa fa-star-o"></i>
-                                                                            <i class="fa fa-star-o"></i>
-                                                                            <i class="fa fa-star-o"></i>
-                                                                            <i class="fa fa-star-o"></i>
-                                                                        </c:when>
-                                                                        <c:when test="${p.rating == 0 && p.rating < 1}">
-                                                                            <i class="fa fa-star-o"></i>
-                                                                            <i class="fa fa-star-o"></i>
-                                                                            <i class="fa fa-star-o"></i>
-                                                                            <i class="fa fa-star-o"></i>
-                                                                            <i class="fa fa-star-o"></i>
-                                                                        </c:when>
-                                                                    </c:choose>
-                                                                </div>
-                                                                <div class="product-btns">
-                                                                    <button><a class="add-to-wishlist" href="Work_In_Progress.jsp"><i class="fa fa-heart-o"></i><span class="tooltipp">add to wishlist</span></a></button>
-                                                                    <button><a class="quick-view" href="Detail?pid=${p.PID}"><i class="fa fa-eye"></i><span class="tooltipp">View</span></a></button>
-                                                                </div>
-                                                            </div>
-                                                            <div class="add-to-cart">
-                                                                <a href="CartServlet?id=${p.PID}" class="add-to-cart-btn" type="submit"><i class="fa fa-shopping-cart"></i>Ordered</a>
-                                                            </div>
+                                                            <c:forEach items="${oldProduct}" var="onp">
+                                                                <c:choose>
+                                                                    <c:when test="${onp.PID == half1.PID}">
+                                                                        <h4 class="product-price">${half1.price}</h4>
+                                                                    </c:when >   
+                                                                </c:choose>
+                                                            </c:forEach>  
                                                         </div>
-                                                    </c:if>
-                                                </c:forEach>
-
-                                            </div>
-                                            <div id="slick-nav-2" class="products-slick-nav"></div>
+                                                    </div>
+                                                    <!-- /product widget -->
+                                                </c:if>
+                                            </c:forEach>
                                         </div>
-                                        <!-- /tab -->
+
+                                        <div>
+                                            <c:forEach items="${ratePAF2}" var="half2">
+                                                <c:if test="${half2.stock == true}">
+                                                    <!-- product widget -->
+                                                    <div class="product-widget">
+                                                        <div class="product-img">
+                                                            <img src="${half2.image}" alt="">
+                                                        </div>
+                                                        <div class="product-body">
+                                                            <h3 class="product-name"><a href="Detail?pid=${half2.PID}">${half2.nameP}</a></h3>
+
+                                                            <c:forEach items="${listP}" var="np">
+                                                                <c:choose>
+                                                                    <c:when test="${np.PID == half2.PID}">
+                                                                        <h4 class="product-price">${half2.price / 2} VND <del class="product-old-price">${half2.price} VND</del></h4>
+                                                                    </c:when >   
+                                                                </c:choose>
+                                                            </c:forEach>
+
+                                                            <c:forEach items="${oldProduct}" var="onp">
+                                                                <c:choose>
+                                                                    <c:when test="${onp.PID == half2.PID}">
+                                                                        <h4 class="product-price">${half2.price}</h4>
+                                                                    </c:when >   
+                                                                </c:choose>
+                                                            </c:forEach>  
+                                                        </div>
+                                                    </div>
+                                                    <!-- /product widget -->
+                                                </c:if>
+                                            </c:forEach>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 col-xs-6">
+                                    <div class="section-title">
+                                        <h4 class="title">Top Rate Italian Food</h4>
+                                        <div class="section-nav">
+                                            <div id="slick-nav-4" class="products-slick-nav"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="products-widget-slick" data-nav="#slick-nav-4">
+                                        <div>
+                                            <c:forEach items="${ratePIF1}" var="half1">
+                                                <c:if test="${half1.stock == true}">
+                                                    <!-- product widget -->
+                                                    <div class="product-widget">
+                                                        <div class="product-img">
+                                                            <img src="${half1.image}" alt="">
+                                                        </div>
+                                                        <div class="product-body">
+                                                            <h3 class="product-name"><a href="Detail?pid=${half1.PID}">${half1.nameP}</a></h3>
+                                                                <c:forEach items="${listP}" var="np">
+                                                                    <c:choose>
+                                                                        <c:when test="${np.PID == half1.PID}">
+                                                                        <h4 class="product-price">${half1.price / 2} VND <del class="product-old-price">${half1.price} VND</del></h4>
+                                                                    </c:when >   
+                                                                </c:choose>
+                                                            </c:forEach>
+
+                                                            <c:forEach items="${oldProduct}" var="onp">
+                                                                <c:choose>
+                                                                    <c:when test="${onp.PID == half1.PID}">
+                                                                        <h4 class="product-price">${half1.price}</h4>
+                                                                    </c:when >   
+                                                                </c:choose>
+                                                            </c:forEach>  
+                                                        </div>
+                                                    </div>
+                                                    <!-- /product widget -->
+                                                </c:if>
+                                            </c:forEach>
+                                        </div>
+
+                                        <div>
+                                            <c:forEach items="${ratePIF2}" var="half2">
+                                                <c:if test="${half2.stock == true}">
+                                                    <!-- product widget -->
+                                                    <div class="product-widget">
+                                                        <div class="product-img">
+                                                            <img src="${half2.image}" alt="">
+                                                        </div>
+                                                        <div class="product-body">
+                                                            <h3 class="product-name"><a href="Detail?pid=${half2.PID}">${half2.nameP}</a></h3>
+
+                                                            <c:forEach items="${listP}" var="np">
+                                                                <c:choose>
+                                                                    <c:when test="${np.PID == half2.PID}">
+                                                                        <h4 class="product-price">${half2.price / 2} VND <del class="product-old-price">${half2.price} VND</del></h4>
+                                                                    </c:when >   
+                                                                </c:choose>
+                                                            </c:forEach>
+
+                                                            <c:forEach items="${oldProduct}" var="onp">
+                                                                <c:choose>
+                                                                    <c:when test="${onp.PID == half2.PID}">
+                                                                        <h4 class="product-price">${half2.price}</h4>
+                                                                    </c:when >   
+                                                                </c:choose>
+                                                            </c:forEach>  
+                                                        </div>
+                                                    </div>
+                                                    <!-- /product widget -->
+                                                </c:if>
+                                            </c:forEach>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="clearfix visible-sm visible-xs"></div>
+
+                                <div class="col-md-4 col-xs-6">
+                                    <div class="section-title">
+                                        <h4 class="title">Top Rate Indian Food</h4>
+                                        <div class="section-nav">
+                                            <div id="slick-nav-5" class="products-slick-nav"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="products-widget-slick" data-nav="#slick-nav-5">
+                                        <div>
+                                            <c:forEach items="${ratePINF1}" var="half1">
+                                                <c:if test="${half1.stock == true}">
+                                                    <!-- product widget -->
+                                                    <div class="product-widget">
+                                                        <div class="product-img">
+                                                            <img src="${half1.image}" alt="">
+                                                        </div>
+                                                        <div class="product-body">
+                                                            <h3 class="product-name"><a href="Detail?pid=${half1.PID}">${half1.nameP}</a></h3>
+                                                                <c:forEach items="${listP}" var="np">
+                                                                    <c:choose>
+                                                                        <c:when test="${np.PID == half1.PID}">
+                                                                        <h4 class="product-price">${half1.price / 2} VND <del class="product-old-price">${half1.price} VND</del></h4>
+                                                                    </c:when >   
+                                                                </c:choose>
+                                                            </c:forEach>
+
+                                                            <c:forEach items="${oldProduct}" var="onp">
+                                                                <c:choose>
+                                                                    <c:when test="${onp.PID == half1.PID}">
+                                                                        <h4 class="product-price">${half1.price}</h4>
+                                                                    </c:when >   
+                                                                </c:choose>
+                                                            </c:forEach>  
+                                                        </div>
+                                                    </div>
+                                                    <!-- /product widget -->
+                                                </c:if>
+                                            </c:forEach>
+                                        </div>
+
+                                        <div>
+                                            <c:forEach items="${ratePINF2}" var="half2">
+                                                <c:if test="${half2.stock == true}">
+                                                    <!-- product widget -->
+                                                    <div class="product-widget">
+                                                        <div class="product-img">
+                                                            <img src="${half2.image}" alt="">
+                                                        </div>
+                                                        <div class="product-body">
+                                                            <h3 class="product-name"><a href="Detail?pid=${half2.PID}">${half2.nameP}</a></h3>
+
+                                                            <c:forEach items="${listP}" var="np">
+                                                                <c:choose>
+                                                                    <c:when test="${np.PID == half2.PID}">
+                                                                        <h4 class="product-price">${half2.price / 2} VND <del class="product-old-price">${half2.price} VND</del></h4>
+                                                                    </c:when >   
+                                                                </c:choose>
+                                                            </c:forEach>
+
+                                                            <c:forEach items="${oldProduct}" var="onp">
+                                                                <c:choose>
+                                                                    <c:when test="${onp.PID == half2.PID}">
+                                                                        <h4 class="product-price">${half2.price}</h4>
+                                                                    </c:when >   
+                                                                </c:choose>
+                                                            </c:forEach>  
+                                                        </div>
+                                                    </div>
+                                                    <!-- /product widget -->
+                                                </c:if>
+                                            </c:forEach>
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- /Products tab & slick -->
+
                         </div>
                         <!-- /row -->
                     </div>
                     <!-- /container -->
+                    <jsp:include page="Footer.jsp"></jsp:include>
                 </div>
-                <!-- /SECTION -->
 
-                <!-- SECTION -->
-                <div class="section">
-                    <!-- container -->
-                    <div class="container">
-                        <!-- row -->
-                        <div class="row">
-                            <div class="col-md-4 col-xs-6">
-                                <div class="section-title">
-                                    <h4 class="title">Top Rate Asian Food</h4>
-                                    <div class="section-nav">
-                                        <div id="slick-nav-3" class="products-slick-nav"></div>
-                                    </div>
-                                </div>
-
-                                <div class="products-widget-slick" data-nav="#slick-nav-3">
-
-                                    <div>
-                                        <c:forEach items="${ratePAF1}" var="half1">
-                                            <c:if test="${half1.stock == true}">
-                                                <!-- product widget -->
-                                                <div class="product-widget">
-                                                    <div class="product-img">
-                                                        <img src="${half1.image}" alt="">
-                                                    </div>
-                                                    <div class="product-body">
-                                                        <h3 class="product-name"><a href="Detail?pid=${half1.PID}">${half1.nameP}</a></h3>
-                                                            <c:forEach items="${listP}" var="np">
-                                                                <c:choose>
-                                                                    <c:when test="${np.PID == half1.PID}">
-                                                                    <h4 class="product-price">${half1.price / 2} VND <del class="product-old-price">${half1.price} VND</del></h4>
-                                                                </c:when >   
-                                                            </c:choose>
-                                                        </c:forEach>
-
-                                                        <c:forEach items="${oldProduct}" var="onp">
-                                                            <c:choose>
-                                                                <c:when test="${onp.PID == half1.PID}">
-                                                                    <h4 class="product-price">${half1.price}</h4>
-                                                                </c:when >   
-                                                            </c:choose>
-                                                        </c:forEach>  
-                                                    </div>
-                                                </div>
-                                                <!-- /product widget -->
-                                            </c:if>
-                                        </c:forEach>
-                                    </div>
-
-                                    <div>
-                                        <c:forEach items="${ratePAF2}" var="half2">
-                                            <c:if test="${half2.stock == true}">
-                                                <!-- product widget -->
-                                                <div class="product-widget">
-                                                    <div class="product-img">
-                                                        <img src="${half2.image}" alt="">
-                                                    </div>
-                                                    <div class="product-body">
-                                                        <h3 class="product-name"><a href="Detail?pid=${half2.PID}">${half2.nameP}</a></h3>
-
-                                                        <c:forEach items="${listP}" var="np">
-                                                            <c:choose>
-                                                                <c:when test="${np.PID == half2.PID}">
-                                                                    <h4 class="product-price">${half2.price / 2} VND <del class="product-old-price">${half2.price} VND</del></h4>
-                                                                </c:when >   
-                                                            </c:choose>
-                                                        </c:forEach>
-
-                                                        <c:forEach items="${oldProduct}" var="onp">
-                                                            <c:choose>
-                                                                <c:when test="${onp.PID == half2.PID}">
-                                                                    <h4 class="product-price">${half2.price}</h4>
-                                                                </c:when >   
-                                                            </c:choose>
-                                                        </c:forEach>  
-                                                    </div>
-                                                </div>
-                                                <!-- /product widget -->
-                                            </c:if>
-                                        </c:forEach>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4 col-xs-6">
-                                <div class="section-title">
-                                    <h4 class="title">Top Rate Italian Food</h4>
-                                    <div class="section-nav">
-                                        <div id="slick-nav-4" class="products-slick-nav"></div>
-                                    </div>
-                                </div>
-
-                                <div class="products-widget-slick" data-nav="#slick-nav-4">
-                                    <div>
-                                        <c:forEach items="${ratePIF1}" var="half1">
-                                            <c:if test="${half1.stock == true}">
-                                                <!-- product widget -->
-                                                <div class="product-widget">
-                                                    <div class="product-img">
-                                                        <img src="${half1.image}" alt="">
-                                                    </div>
-                                                    <div class="product-body">
-                                                        <h3 class="product-name"><a href="Detail?pid=${half1.PID}">${half1.nameP}</a></h3>
-                                                            <c:forEach items="${listP}" var="np">
-                                                                <c:choose>
-                                                                    <c:when test="${np.PID == half1.PID}">
-                                                                    <h4 class="product-price">${half1.price / 2} VND <del class="product-old-price">${half1.price} VND</del></h4>
-                                                                </c:when >   
-                                                            </c:choose>
-                                                        </c:forEach>
-
-                                                        <c:forEach items="${oldProduct}" var="onp">
-                                                            <c:choose>
-                                                                <c:when test="${onp.PID == half1.PID}">
-                                                                    <h4 class="product-price">${half1.price}</h4>
-                                                                </c:when >   
-                                                            </c:choose>
-                                                        </c:forEach>  
-                                                    </div>
-                                                </div>
-                                                <!-- /product widget -->
-                                            </c:if>
-                                        </c:forEach>
-                                    </div>
-
-                                    <div>
-                                        <c:forEach items="${ratePIF2}" var="half2">
-                                            <c:if test="${half2.stock == true}">
-                                                <!-- product widget -->
-                                                <div class="product-widget">
-                                                    <div class="product-img">
-                                                        <img src="${half2.image}" alt="">
-                                                    </div>
-                                                    <div class="product-body">
-                                                        <h3 class="product-name"><a href="Detail?pid=${half2.PID}">${half2.nameP}</a></h3>
-
-                                                        <c:forEach items="${listP}" var="np">
-                                                            <c:choose>
-                                                                <c:when test="${np.PID == half2.PID}">
-                                                                    <h4 class="product-price">${half2.price / 2} VND <del class="product-old-price">${half2.price} VND</del></h4>
-                                                                </c:when >   
-                                                            </c:choose>
-                                                        </c:forEach>
-
-                                                        <c:forEach items="${oldProduct}" var="onp">
-                                                            <c:choose>
-                                                                <c:when test="${onp.PID == half2.PID}">
-                                                                    <h4 class="product-price">${half2.price}</h4>
-                                                                </c:when >   
-                                                            </c:choose>
-                                                        </c:forEach>  
-                                                    </div>
-                                                </div>
-                                                <!-- /product widget -->
-                                            </c:if>
-                                        </c:forEach>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="clearfix visible-sm visible-xs"></div>
-
-                            <div class="col-md-4 col-xs-6">
-                                <div class="section-title">
-                                    <h4 class="title">Top Rate Indian Food</h4>
-                                    <div class="section-nav">
-                                        <div id="slick-nav-5" class="products-slick-nav"></div>
-                                    </div>
-                                </div>
-
-                                <div class="products-widget-slick" data-nav="#slick-nav-5">
-                                    <div>
-                                        <c:forEach items="${ratePINF1}" var="half1">
-                                            <c:if test="${half1.stock == true}">
-                                                <!-- product widget -->
-                                                <div class="product-widget">
-                                                    <div class="product-img">
-                                                        <img src="${half1.image}" alt="">
-                                                    </div>
-                                                    <div class="product-body">
-                                                        <h3 class="product-name"><a href="Detail?pid=${half1.PID}">${half1.nameP}</a></h3>
-                                                            <c:forEach items="${listP}" var="np">
-                                                                <c:choose>
-                                                                    <c:when test="${np.PID == half1.PID}">
-                                                                    <h4 class="product-price">${half1.price / 2} VND <del class="product-old-price">${half1.price} VND</del></h4>
-                                                                </c:when >   
-                                                            </c:choose>
-                                                        </c:forEach>
-
-                                                        <c:forEach items="${oldProduct}" var="onp">
-                                                            <c:choose>
-                                                                <c:when test="${onp.PID == half1.PID}">
-                                                                    <h4 class="product-price">${half1.price}</h4>
-                                                                </c:when >   
-                                                            </c:choose>
-                                                        </c:forEach>  
-                                                    </div>
-                                                </div>
-                                                <!-- /product widget -->
-                                            </c:if>
-                                        </c:forEach>
-                                    </div>
-
-                                    <div>
-                                        <c:forEach items="${ratePINF2}" var="half2">
-                                            <c:if test="${half2.stock == true}">
-                                                <!-- product widget -->
-                                                <div class="product-widget">
-                                                    <div class="product-img">
-                                                        <img src="${half2.image}" alt="">
-                                                    </div>
-                                                    <div class="product-body">
-                                                        <h3 class="product-name"><a href="Detail?pid=${half2.PID}">${half2.nameP}</a></h3>
-
-                                                        <c:forEach items="${listP}" var="np">
-                                                            <c:choose>
-                                                                <c:when test="${np.PID == half2.PID}">
-                                                                    <h4 class="product-price">${half2.price / 2} VND <del class="product-old-price">${half2.price} VND</del></h4>
-                                                                </c:when >   
-                                                            </c:choose>
-                                                        </c:forEach>
-
-                                                        <c:forEach items="${oldProduct}" var="onp">
-                                                            <c:choose>
-                                                                <c:when test="${onp.PID == half2.PID}">
-                                                                    <h4 class="product-price">${half2.price}</h4>
-                                                                </c:when >   
-                                                            </c:choose>
-                                                        </c:forEach>  
-                                                    </div>
-                                                </div>
-                                                <!-- /product widget -->
-                                            </c:if>
-                                        </c:forEach>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <!-- /row -->
-                </div>
-                <!-- /container -->
-                <jsp:include page="Footer.jsp"></jsp:include>
             </div>
             <!-- /SECTION -->
-
-
         </section>
 
         <!-- jQuery Plugins -->
@@ -693,7 +695,7 @@
 
                     main.style.display = 'block';
                     setTimeout(() => (main.style.opacity = 1), 100);
-                }, 3000);
+                }, 2500);
             }
 
             init();

@@ -32,7 +32,7 @@
         <link rel="stylesheet" href="css/font-awesome.min.css">
 
         <!-- Custom stlylesheet -->
-        <link type="text/css" rel="stylesheet" href="css/style.css"/>
+        <link type="text/css" rel="stylesheet" href="css/   style.css"/>
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 
@@ -96,9 +96,10 @@
                                     </button>
                                     <div class="noidung_dropdown">
                                         <a id="dropItem" href="UpdateAccount?AID=${user.accID}" style="font-size: 14px" >Manager Account</a>
-                                        <a id="dropItem" href="BillShowServlet?AID=${user.accID}" style="font-size: 14px">View Bill</a>
+                                        <a id="dropItem" href="BillShowServlet?AID=${user.accID}" style="margin-bottom:-20px;font-size: 14px">View Bill</a>
+                                        <hr class="solid" style="border-top: 1px solid #D9D9D9;">
                                         <c:if test="${user.roleID == 'R01'}">
-                                            <a class="nav-link" href="AdminHome">Admin Page</a>
+                                            <a class="nav-link" href="AdminHome"style="margin-top: -20px;margin-bottom: -20px; font-size: 14px">Admin Page</a>
                                         </c:if>
                                         <hr class="solid" style="border-top: 1px solid #D9D9D9;">
                                         <a id="dropItem" href="LogoutServlet" style="margin-top: -20px; font-size: 14px">Logout</a>

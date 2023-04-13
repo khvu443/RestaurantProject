@@ -133,6 +133,7 @@
                         <!-- store products -->
                         <div class="row">
                             <!-- product -->
+                            
 
                             <c:forEach items="${listP}" var="product" >
                                 <c:if test="${product.stock == true}">

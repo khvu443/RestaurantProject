@@ -35,7 +35,12 @@ public class HomeStoreServlet extends HttpServlet {
         List<String> arr = new ArrayList<>();
 
         request.setAttribute("page", page);
-        request.setAttribute("sizeProduct", (allP.size() / 5));
+                int sizePage = allP.size() / 5;
+        if (allP.size() % 5 != 0) {
+            sizePage++;
+        }
+        request.setAttribute("sizeProduct", sizePage);
+        
         request.setAttribute("sortPage", sort);
         request.setAttribute("newP", newP);
 

@@ -13,8 +13,8 @@ public class NewMain {
     public static void main(String[] args) {
 
         RestaurantDAO dao = new RestaurantDAO();
-        List<category> ls = dao.getAllCategory();
-        System.out.println("id - " + autoIncreaseID(ls));
+        List<Product> ls = dao.getAllProduct();
+        System.out.println(ls);
     }
 
     static String autoIncreaseID(List<category> ls) {

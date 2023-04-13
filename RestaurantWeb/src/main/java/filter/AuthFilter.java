@@ -38,7 +38,7 @@ public class AuthFilter implements Filter {
         HttpSession session = request.getSession();
         Account acc = null;
         if (url.startsWith("/DemoAssignment/Admin")) {
-            if (((acc = (Account) session.getAttribute("NAME")) != null) || (cookies != null)) {
+            if (((acc = (Account) session.getAttribute("NAME")) != null)) {
                 System.out.println("cookies is not null " + (cookies != null));
                 System.out.println("Acc in filter: " + acc);
                 if (acc.getRoleID().equals("R01")) {

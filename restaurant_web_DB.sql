@@ -92,4 +92,3 @@ insert into account values ('A03','NVA', '12345', 'Nguyen Van A','R02', 'true')
 insert into account values ('A04','NVB', '12345', 'Nguyen Van B','R02', 'true')
 insert into account values ('A05','QuanDD', '12345', 'Dang Dinh Quan','R01', 'true')
 
-

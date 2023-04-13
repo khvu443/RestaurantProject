@@ -28,9 +28,11 @@ public class AdminShowProduct extends HttpServlet {
         List<category> cl = Rdao.getAllCategory();
 
         request.setAttribute("page", page);
-        request.setAttribute("sizeProduct", (pl.size() / 5));
+        int size = pl.size() / 5;
+        if(pl.size() % 5 != 0) size ++;
+        request.setAttribute("sizeProduct", size);
+        
         HttpSession session = request.getSession();
-
         session.setAttribute("PRODUCT", pl);
         request.setAttribute("cl", cl);
 

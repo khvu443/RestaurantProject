@@ -21,9 +21,12 @@ public class SearchProductServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         String name = request.getParameter("search");
+        
         System.out.println("name search: " + name);
+        
         HttpSession session = request.getSession();
         session.setAttribute("search", name);
+        
         RestaurantDAO dao = new RestaurantDAO();
 
         List<Product> searchSize = dao.searchProductByName(name);
